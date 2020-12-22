@@ -22,6 +22,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../src/screens/Home';
 import Resource from '../src/screens/Resource';
 import Supplier from '../src/screens/Supplier';
+import QRcode from '../src/screens/QRcode';
 const stack = createStackNavigator();
 const drawer = createDrawerNavigator();
 
@@ -51,6 +52,7 @@ const AuthNav = () => {
 };
 
 const CustomDrawer = (props) => {
+  console.log('props-->',props);
   return (
     <View style={{flex: 1, backgroundColor: 'rgba(0,0,0,1)'}}>
       <View
@@ -74,14 +76,14 @@ const CustomDrawer = (props) => {
             )}
             label="Home"
             labelStyle={{color: 'white', fontSize: 20}}
-            onPress={() => console.log('click')}></DrawerItem>
+            onPress={() => props.navigation.navigate('Home')}></DrawerItem>
           <DrawerItem
             icon={({color, size}) => (
               <Icon color="white" size={30} name="truck-check"></Icon>
             )}
             label="Resources"
             labelStyle={{color: 'white', fontSize: 20}}
-            onPress={() => console.log('click')}></DrawerItem>
+            onPress={() => props.navigation.navigate('resource')}></DrawerItem>
           <DrawerItem
             icon={({color, size}) => (
               <Icon color="white" size={30} name="history"></Icon>
@@ -95,7 +97,7 @@ const CustomDrawer = (props) => {
             )}
             label="QRcode Scanner"
             labelStyle={{color: 'white', fontSize: 20}}
-            onPress={() => console.log('click')}></DrawerItem>
+            onPress={() => props.navigation.navigate('QRcode')}></DrawerItem>
           <DrawerItem
             icon={({color, size}) => (
               <Icon color="white" size={30} name="account-settings"></Icon>
@@ -123,6 +125,7 @@ const MyDrawer = () => {
       <drawer.Screen name="Home" component={AuthNav}></drawer.Screen>
       <drawer.Screen name="resource" component={Resource}></drawer.Screen>
       <drawer.Screen name="Supplier" component={Supplier}></drawer.Screen>
+      <drawer.Screen name="QRcode" component={QRcode}></drawer.Screen>
     </drawer.Navigator>
   );
 };
